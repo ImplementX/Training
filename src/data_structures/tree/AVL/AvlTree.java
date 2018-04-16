@@ -51,8 +51,13 @@ public class AvlTree<AnyType extends Comparable> {
         checkBalance(root);
     }
 
-    public void printTree(){
-        printTree(root);
+    public void printTree() {
+        if (root != null) {
+            printTree(root);
+        }
+        else{
+            System.out.println("The tree is empty!");
+        }
     }
 
     public Boolean contains(AnyType data){
