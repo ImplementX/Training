@@ -127,6 +127,7 @@ public class ZhiHu {
             }
             func(list);
     }
+    sc.close();
  }
 
     public static void func(ArrayList<Course> list){
