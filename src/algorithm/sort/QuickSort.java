@@ -24,9 +24,11 @@ public class QuickSort {
 //	        quick_sort(s, i + 1, r);  
 //	    }  
 //	}  
+	public static void quickSort(int nums[]){
+		quickSort(nums, 0, nums.length-1);
+	}
 	
-	
-	public static void quickSort(int nums[],int l,int r) {
+	private static void quickSort(int nums[],int l,int r) {
 
 		if(l < r){
 			int i = l,j = r,x = nums[l];
@@ -56,20 +58,10 @@ public class QuickSort {
 		
 		
 	}
-	
-	
-	
-	
-	
-	
 
-	
-	
-	
-	
 	public static void main(String[] args) {
 		int[] nums = {7 ,4, 8,7,5,11,33,6,78,9,2 };
-		quickSort(nums, 0, nums.length-1);
+		quickSort(nums);
 		for (int i = 0; i < nums.length; i++) {
 			System.out.print(nums[i]+" ");
 		}
