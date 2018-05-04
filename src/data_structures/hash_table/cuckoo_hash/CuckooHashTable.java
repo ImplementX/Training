@@ -1,4 +1,4 @@
-package data_structures.hash_table;
+package data_structures.hash_table.cuckoo_hash;
 
 import java.util.Random;
 
