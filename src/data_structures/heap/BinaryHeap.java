@@ -4,11 +4,12 @@ import data_structures.exceptions.UnderflowException;
 //小顶堆
 public class BinaryHeap< AnyType extends Comparable< ? super AnyType > > {
     public BinaryHeap() {
-
+        this( DEFAULT_CAPACITY );
     }
 
     public BinaryHeap( int capacity ) {
-
+        currentSize = 0;
+        array = (AnyType[]) new Comparable[ capacity + 1 ];
     }
 
     public BinaryHeap( AnyType[] items ) {
@@ -35,8 +36,10 @@ public class BinaryHeap< AnyType extends Comparable< ? super AnyType > > {
         array[ hole ] = x;
     }
 
-    public AnyType findMin() {
-
+    public AnyType findMin() throws UnderflowException {
+        if( isEmpty( ) )
+            throw new UnderflowException( );
+        return array[ 1 ];
     }
 
     public AnyType deleteMin() throws UnderflowException {
@@ -61,7 +64,7 @@ public class BinaryHeap< AnyType extends Comparable< ? super AnyType > > {
         currentSize = 0;
     }
 
-    private static final int DEAFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 10;
 
     private int currentSize;
 
@@ -98,6 +101,21 @@ public class BinaryHeap< AnyType extends Comparable< ? super AnyType > > {
     }
 
     private void enlargeArray( int newSize ) {
+        AnyType [] old = array;
+        array = (AnyType []) new Comparable[ newSize ];
+        for( int i = 0; i < old.length; i++ )
+            array[ i ] = old[ i ];
+    }
 
+    public static void main( String [ ] args ) throws UnderflowException {
+        int numItems = 10000;
+        BinaryHeap<Integer> h = new BinaryHeap<>( );
+        int i = 37;
+
+        for( i = 37; i != 0; i = ( i + 37 ) % numItems )
+            h.insert( i );
+        for( i = 1; i < numItems; i++ )
+            if( h.deleteMin( ) != i )
+                System.out.println( "Oops! " + i );
     }
 }
