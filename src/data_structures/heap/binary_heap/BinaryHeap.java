@@ -1,4 +1,4 @@
-package data_structures.heap;
+package data_structures.heap.binary_heap;
 
 import data_structures.exceptions.UnderflowException;
 //小顶堆
