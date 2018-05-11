@@ -1,5 +1,7 @@
 package data_structures.heap.leftist_heap;
 
+import data_structures.exceptions.UnderflowException;
+
 //小顶左式堆
 public class LeftistHeap< AnyType extends Comparable< ? super AnyType > > {
     public LeftistHeap() {
@@ -15,15 +17,20 @@ public class LeftistHeap< AnyType extends Comparable< ? super AnyType > > {
     }
 
     public void insert( AnyType x ) {
-
+        root = merge( new Node< AnyType >( x ),root );
     }
 
-    public AnyType finMin() {
-        return
+    public AnyType findMin() {
+        return root.element;
     }
 
-    public AnyType deleteMin() {
-
+    public AnyType deleteMin() throws UnderflowException {
+        if( isEmpty() ){
+            throw new UnderflowException();
+        }
+        AnyType minItem = root.element;
+        root = merge( root.left,root.right );
+        return minItem;
     }
 
     public boolean isEmpty() {
@@ -31,7 +38,7 @@ public class LeftistHeap< AnyType extends Comparable< ? super AnyType > > {
     }
 
     public void makeEmpty() {
-
+        root.element = null;
     }
 
     private static class Node< AnyType > {
