@@ -21,6 +21,7 @@ public class LeftistHeap< AnyType extends Comparable< ? super AnyType > > {
         AnyType element;
         Node< AnyType > left;
         Node< AnyType > right;
+
         int npl;
     }
 
@@ -59,7 +60,7 @@ public class LeftistHeap< AnyType extends Comparable< ? super AnyType > > {
     }
 
     public void makeEmpty() {
-        root.element = null;
+        root = null;
     }
 
 
