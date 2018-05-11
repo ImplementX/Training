@@ -4,42 +4,7 @@ import data_structures.exceptions.UnderflowException;
 
 //小顶左式堆
 public class LeftistHeap< AnyType extends Comparable< ? super AnyType > > {
-    public LeftistHeap() {
-        root = null;
-    }
-
-    public void merge( LeftistHeap< AnyType > rhs ) {
-        if ( this == rhs ) {
-            return;
-        }
-        root = merge( root, rhs.root );
-        rhs.root = null;
-    }
-
-    public void insert( AnyType x ) {
-        root = merge( new Node< AnyType >( x ),root );
-    }
-
-    public AnyType findMin() {
-        return root.element;
-    }
-
-    public AnyType deleteMin() throws UnderflowException {
-        if( isEmpty() ){
-            throw new UnderflowException();
-        }
-        AnyType minItem = root.element;
-        root = merge( root.left,root.right );
-        return minItem;
-    }
-
-    public boolean isEmpty() {
-        return root == null;
-    }
-
-    public void makeEmpty() {
-        root.element = null;
-    }
+    private Node< AnyType > root;
 
     private static class Node< AnyType > {
         public Node( AnyType theElement ) {
@@ -59,7 +24,44 @@ public class LeftistHeap< AnyType extends Comparable< ? super AnyType > > {
         int npl;
     }
 
-    private Node< AnyType > root;
+
+    public LeftistHeap() {
+        root = null;
+    }
+
+    public void merge( LeftistHeap< AnyType > rhs ) {
+        if ( this == rhs ) {
+            return;
+        }
+        root = merge( root, rhs.root );
+        rhs.root = null;
+    }
+
+    public void insert( AnyType x ) {
+        root = merge( new Node< AnyType >( x ), root );
+    }
+
+    public AnyType findMin() {
+        return root.element;
+    }
+
+    public AnyType deleteMin() throws UnderflowException {
+        if ( isEmpty() ) {
+            throw new UnderflowException();
+        }
+        AnyType minItem = root.element;
+        root = merge( root.left, root.right );
+        return minItem;
+    }
+
+    public boolean isEmpty() {
+        return root == null;
+    }
+
+    public void makeEmpty() {
+        root.element = null;
+    }
+
 
     private Node< AnyType > merge( Node< AnyType > h1, Node< AnyType > h2 ) {
         if ( h1 == null ) {
