@@ -1,7 +1,7 @@
 package algorithm.sort;
 
 public class QuickSort {
-//	static void quick_sort(int s[], int l, int r)  
+    //	static void quick_sort(int s[], int l, int r)
 //	{  
 //	    if (l < r)  
 //	    {  
@@ -24,49 +24,50 @@ public class QuickSort {
 //	        quick_sort(s, i + 1, r);  
 //	    }  
 //	}  
-	public static void quickSort(int nums[]){
-		quickSort(nums, 0, nums.length-1);
-	}
-	
-	private static void quickSort(int nums[],int l,int r) {
+    public static void quickSort(int nums[]) {
+        quickSort(nums, 0, nums.length - 1);
+    }
 
-		if(l < r){
-			int i = l,j = r,x = nums[l];
-			
-			
-			while(i < j){
+    private static void quickSort(int nums[], int l, int r) {
 
-				while(i < j && x <= nums[j]){
-					j--;
-				}
-				if(i < j){
-					nums[i++]=nums[j];
-				}
-				
-				while(i < j && x >= nums[i]){
-					i++;
-				}
-				if(i < j){
-					nums[j--]=nums[i];
-				}
-			}
-			nums[i]=x;
-			
-			quickSort(nums, l, i-1);
-			quickSort(nums, i+1, r);
-		}
-		
-		
-	}
+        if (l < r) {
+            int i = l, j = r, x = nums[l];
 
-	public static void main(String[] args) {
-		int[] nums = {7 ,4, 8,7,5,11,33,6,78,9,2 };
-		quickSort(nums);
-		for (int i = 0; i < nums.length; i++) {
-			System.out.print(nums[i]+" ");
-		}
+            while (i < j) {
+
+                while (i < j && x <= nums[j]) {
+                    j--;
+                }
+
+                if (i < j) {
+                    nums[i++] = nums[j];
+                }
+
+                while (i < j && x >= nums[i]) {
+                    i++;
+                }
+
+                if (i < j) {
+                    nums[j--] = nums[i];
+                }
+            }
+            nums[i] = x;
+
+            quickSort(nums, l, i - 1);
+            quickSort(nums, i + 1, r);
+        }
 
 
-	}
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {7, 4, 8, 7, 5, 11, 33, 6, 78, 9, 2};
+        quickSort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            System.out.print(nums[i] + " ");
+        }
+
+
+    }
 }
  

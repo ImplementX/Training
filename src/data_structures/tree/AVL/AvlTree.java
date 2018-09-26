@@ -272,8 +272,7 @@ public class AvlTree<AnyType extends Comparable> {
             if( NUMS < SMALL )
                 t.checkBalance( );
         }
-
-        for( int i = 1; i < NUMS; i+= 2 )
+        哀绿哀绿
         {
             //   System.out.println( "REMOVE: " + i );
             t.remove( i );
